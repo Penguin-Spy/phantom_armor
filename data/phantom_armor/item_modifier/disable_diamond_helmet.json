@@ -1,0 +1,23 @@
+{
+  "function": "sequence",
+  "functions": [
+    {
+      "function": "set_components",
+      "components": {
+        "equippable": {
+          "slot": "head",
+          "asset_id": "minecraft:diamond",
+          "equip_sound": "minecraft:item.armor.equip_diamond"
+        }
+      }
+    },
+    {
+      "function": "set_components",
+      "components": {
+        "stored_enchantments": {
+          "phantom_armor:phantom_touched_disabled": 1
+        }
+      }
+    }
+  ]
+}

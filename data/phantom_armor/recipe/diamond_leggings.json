@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:smithing_transform",
+  "template": "phantom_membrane",
+  "base": "diamond_leggings",
+  "result": {
+    "id": "diamond_leggings",
+    "components": {
+      "equippable": {
+        "slot": "legs",
+        "asset_id": "phantom_armor:nothing",
+        "equip_sound": "minecraft:item.armor.equip_diamond"
+      },
+      "stored_enchantments": {
+        "phantom_armor:phantom_touched": 1
+      }
+    }
+  }
+}

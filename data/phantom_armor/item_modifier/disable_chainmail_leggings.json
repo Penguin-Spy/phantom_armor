@@ -1,0 +1,23 @@
+{
+  "function": "sequence",
+  "functions": [
+    {
+      "function": "set_components",
+      "components": {
+        "equippable": {
+          "slot": "legs",
+          "asset_id": "minecraft:chain",
+          "equip_sound": "minecraft:item.armor.equip_chain"
+        }
+      }
+    },
+    {
+      "function": "set_components",
+      "components": {
+        "stored_enchantments": {
+          "phantom_armor:phantom_touched_disabled": 1
+        }
+      }
+    }
+  ]
+}

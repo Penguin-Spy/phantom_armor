@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:smithing_transform",
+  "template": "phantom_membrane",
+  "base": "netherite_helmet",
+  "result": {
+    "id": "netherite_helmet",
+    "components": {
+      "equippable": {
+        "slot": "head",
+        "asset_id": "phantom_armor:nothing",
+        "equip_sound": "minecraft:item.armor.equip_netherite"
+      },
+      "stored_enchantments": {
+        "phantom_armor:phantom_touched": 1
+      }
+    }
+  }
+}
