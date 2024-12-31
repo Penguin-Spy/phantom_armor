@@ -9,8 +9,5 @@ execute unless score $damage phantom_armor matches 0..2 run scoreboard players s
 execute unless score $cooldown phantom_armor matches 1.. run scoreboard players set $cooldown phantom_armor 10
 execute unless score $invisibility phantom_armor matches 0..1 run scoreboard players set $invisibility phantom_armor 1
 
-execute if score $damage phantom_armor matches 0 if score $invisibility phantom_armor matches 0 as @a run function phantom_armor:hide_armor
-
 schedule clear phantom_armor:second
-execute if score $damage phantom_armor matches 1.. run function phantom_armor:second
-execute if score $invisibility phantom_armor matches 1 run function phantom_armor:second
+function phantom_armor:second

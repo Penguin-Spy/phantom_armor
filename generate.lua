@@ -38,35 +38,32 @@ local template_modifier = [[{
       }
     },
     {
-      "function": "set_components",
-      "components": {
-        "stored_enchantments": {
-          "$ENCHANTMENT": 1
-        }
+      "function": "set_enchantments",
+      "enchantments": {
+        "phantom_armor:phantom_touched": $ENCHANTMENT_ENABLED,
+        "phantom_armor:phantom_touched_disabled": $ENCHANTMENT_DISABLED
       }
     }
   ]
 }]]
 
 -- function to make armor visible when being damaged
-local show_function = assert(io.open("data/phantom_armor/function/show_armor.mcfunction", "w+"))
-show_function:write[[scoreboard players operation @s phantom_armor = $cooldown phantom_armor
-]]
+local show_function = {"scoreboard players operation @s phantom_armor = $cooldown phantom_armor"}
 
 -- function to make armor invisible again after the timer expires
-local hide_function = assert(io.open("data/phantom_armor/function/hide_armor.mcfunction", "w+"))
+local hide_function = {}
 
-for item, data in pairs{
-  leather_helmet={"head","leather"}, leather_chestplate={"chest","leather"}, leather_leggings={"legs","leather"}, leather_boots={"feet","leather"},
-  chainmail_helmet={"head","chain"}, chainmail_chestplate={"chest","chain"}, chainmail_leggings={"legs","chain"}, chainmail_boots={"feet","chain"},
-  iron_helmet={"head","iron"}, iron_chestplate={"chest","iron"}, iron_leggings={"legs","iron"}, iron_boots={"feet","iron"},
-  golden_helmet={"head","gold"}, golden_chestplate={"chest","gold"}, golden_leggings={"legs","gold"}, golden_boots={"feet","gold"},
-  diamond_helmet={"head","diamond"}, diamond_chestplate={"chest","diamond"}, diamond_leggings={"legs","diamond"}, diamond_boots={"feet","diamond"},
-  netherite_helmet={"head","netherite"}, netherite_chestplate={"chest","netherite"}, netherite_leggings={"legs","netherite"}, netherite_boots={"feet","netherite"},
-  elytra={"chest","elytra"},
-  turtle_helmet={"head","turtle"}
+for _, data in ipairs{
+  {"leather_helmet","head","leather"}, {"leather_chestplate","chest","leather"}, {"leather_leggings","legs","leather"}, {"leather_boots","feet","leather"},
+  {"chainmail_helmet","head","chain"}, {"chainmail_chestplate","chest","chain"}, {"chainmail_leggings","legs","chain"}, {"chainmail_boots","feet","chain"},
+  {"iron_helmet","head","iron"}, {"iron_chestplate","chest","iron"}, {"iron_leggings","legs","iron"}, {"iron_boots","feet","iron"},
+  {"golden_helmet","head","gold"}, {"golden_chestplate","chest","gold"}, {"golden_leggings","legs","gold"}, {"golden_boots","feet","gold"},
+  {"diamond_helmet","head","diamond"}, {"diamond_chestplate","chest","diamond"}, {"diamond_leggings","legs","diamond"}, {"diamond_boots","feet","diamond"},
+  {"netherite_helmet","head","netherite"}, {"netherite_chestplate","chest","netherite"}, {"netherite_leggings","legs","netherite"}, {"netherite_boots","feet","netherite"},
+  {"elytra","chest","elytra"},
+  {"turtle_helmet","head","turtle"}
 } do
-  local slot, asset_id = table.unpack(data)
+  local item, slot, asset_id = table.unpack(data)
   local sound = "minecraft:item.armor.equip_"..asset_id
 
   -- smithing recipe
@@ -81,7 +78,8 @@ for item, data in pairs{
     SLOT = slot,
     ASSET_ID = "minecraft:"..asset_id.. (asset_id == "turtle" and "_scute" or ""),
     SOUND = sound,
-    ENCHANTMENT = "phantom_armor:phantom_touched_disabled"
+    ENCHANTMENT_ENABLED = 0,
+    ENCHANTMENT_DISABLED = 1
   }))
 
   -- item modifiers to hide while preserving equip sound
@@ -89,15 +87,16 @@ for item, data in pairs{
     SLOT = slot,
     ASSET_ID = "phantom_armor:nothing",
     SOUND = sound,
-    ENCHANTMENT = "phantom_armor:phantom_touched"
+    ENCHANTMENT_ENABLED = 1,
+    ENCHANTMENT_DISABLED = 0
   }))
 
   -- add line to functions
-  show_function:write(replace([=[execute if items entity @s armor.$SLOT $ITEM[stored_enchantments~[{enchantments:"phantom_armor:phantom_touched"}]] run item modify entity @s armor.$SLOT phantom_armor:disable_$ITEM
-]=], {ITEM = item, SLOT = slot}))
-  hide_function:write(replace([=[execute if items entity @s armor.$SLOT $ITEM[stored_enchantments~[{enchantments:"phantom_armor:phantom_touched_disabled"}]] run item modify entity @s armor.$SLOT phantom_armor:enable_$ITEM
-]=], {ITEM = item, SLOT = slot}))
+  table.insert(show_function, replace([=[execute if items entity @s armor.$SLOT $ITEM[enchantments~[{enchantments:"phantom_armor:phantom_touched"}]] run item modify entity @s armor.$SLOT phantom_armor:disable_$ITEM]=],
+    {ITEM = item, SLOT = slot}))
+  table.insert(hide_function, replace([=[execute if items entity @s armor.$SLOT $ITEM[enchantments~[{enchantments:"phantom_armor:phantom_touched_disabled"}]] run item modify entity @s armor.$SLOT phantom_armor:enable_$ITEM]=],
+    {ITEM = item, SLOT = slot}))
 end
 
-show_function:close()
-hide_function:close()
+write("data/phantom_armor/function/show_armor.mcfunction", table.concat(show_function, "\n"))
+write("data/phantom_armor/function/hide_armor.mcfunction", table.concat(hide_function, "\n"))

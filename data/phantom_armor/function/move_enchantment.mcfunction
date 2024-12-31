@@ -1,0 +1,6 @@
+execute if items entity @s player.cursor *[stored_enchantments~[{enchantments:"phantom_armor:phantom_touched"}]] run item modify entity @s player.cursor phantom_armor:move_enchantment
+execute if items entity @s weapon.mainhand *[stored_enchantments~[{enchantments:"phantom_armor:phantom_touched"}]] run item modify entity @s weapon.mainhand phantom_armor:move_enchantment
+execute if items entity @s armor.head *[stored_enchantments~[{enchantments:"phantom_armor:phantom_touched"}]] run item modify entity @s armor.head phantom_armor:move_enchantment
+execute if items entity @s armor.chest *[stored_enchantments~[{enchantments:"phantom_armor:phantom_touched"}]] run item modify entity @s armor.chest phantom_armor:move_enchantment
+execute if items entity @s armor.legs *[stored_enchantments~[{enchantments:"phantom_armor:phantom_touched"}]] run item modify entity @s armor.legs phantom_armor:move_enchantment
+execute if items entity @s armor.feet *[stored_enchantments~[{enchantments:"phantom_armor:phantom_touched"}]] run item modify entity @s armor.feet phantom_armor:move_enchantment

@@ -12,11 +12,10 @@
       }
     },
     {
-      "function": "set_components",
-      "components": {
-        "stored_enchantments": {
-          "phantom_armor:phantom_touched": 1
-        }
+      "function": "set_enchantments",
+      "enchantments": {
+        "phantom_armor:phantom_touched": 1,
+        "phantom_armor:phantom_touched_disabled": 0
       }
     }
   ]
