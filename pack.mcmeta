@@ -1,6 +1,7 @@
 {
     "pack": {
         "description": "Make your armor invisible with Phantom Membrane!\n\u00A7eBy: \u00A7dPenguin_Spy\u00A7r",
-        "pack_format": 61
+        "pack_format": 71,
+        "supported_formats": [71, 2147483647]
     }
 }
