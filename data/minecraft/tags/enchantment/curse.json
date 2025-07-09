@@ -1,6 +1,6 @@
 {
     "values": [
-        "phantom_armor:phantom_touched",
-        "phantom_armor:phantom_touched_disabled"
+        "phantom_touched:phantom_touched",
+        "phantom_touched:phantom_touched_disabled"
     ]
 }

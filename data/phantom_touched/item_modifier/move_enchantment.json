@@ -1,0 +1,14 @@
+[
+    {
+        "function": "set_components",
+        "components": {
+            "!stored_enchantments": {}
+        }
+    },
+    {
+        "function": "set_enchantments",
+        "enchantments": {
+            "phantom_touched:phantom_touched": 1
+        }
+    }
+]

@@ -15,11 +15,11 @@ local template_smithing = [[{
     "components": {
       "equippable": {
         "slot": "$SLOT",
-        "asset_id": "phantom_armor:nothing",
+        "asset_id": "phantom_touched:nothing",
         "equip_sound": "$SOUND"
       },
       "stored_enchantments": {
-        "phantom_armor:phantom_touched": 1
+        "phantom_touched:phantom_touched": 1
       }
     }
   }
@@ -40,15 +40,15 @@ local template_modifier = [[{
     {
       "function": "set_enchantments",
       "enchantments": {
-        "phantom_armor:phantom_touched": $ENCHANTMENT_ENABLED,
-        "phantom_armor:phantom_touched_disabled": $ENCHANTMENT_DISABLED
+        "phantom_touched:phantom_touched": $ENCHANTMENT_ENABLED,
+        "phantom_touched:phantom_touched_disabled": $ENCHANTMENT_DISABLED
       }
     }
   ]
 }]]
 
 -- function to make armor visible when being damaged
-local show_function = {"scoreboard players operation @s phantom_armor = $cooldown phantom_armor"}
+local show_function = {"scoreboard players operation @s phantom_touched = $cooldown phantom_touched"}
 
 -- function to make armor invisible again after the timer expires
 local hide_function = {}
@@ -67,14 +67,14 @@ for _, data in ipairs{
   local sound = "minecraft:item.armor.equip_"..asset_id
 
   -- smithing recipe
-  write("data/phantom_armor/recipe/"..item..".json", replace(template_smithing, {
+  write("data/phantom_touched/recipe/"..item..".json", replace(template_smithing, {
     ITEM = item,
     SLOT = slot,
     SOUND = sound
   }))
 
   -- item modifiers to restore default appearance
-  write("data/phantom_armor/item_modifier/disable_"..item..".json", replace(template_modifier, {
+  write("data/phantom_touched/item_modifier/disable_"..item..".json", replace(template_modifier, {
     SLOT = slot,
     ASSET_ID = "minecraft:"..asset_id.. (asset_id == "turtle" and "_scute" or ""),
     SOUND = sound,
@@ -83,20 +83,20 @@ for _, data in ipairs{
   }))
 
   -- item modifiers to hide while preserving equip sound
-  write("data/phantom_armor/item_modifier/enable_"..item..".json", replace(template_modifier, {
+  write("data/phantom_touched/item_modifier/enable_"..item..".json", replace(template_modifier, {
     SLOT = slot,
-    ASSET_ID = "phantom_armor:nothing",
+    ASSET_ID = "phantom_touched:nothing",
     SOUND = sound,
     ENCHANTMENT_ENABLED = 1,
     ENCHANTMENT_DISABLED = 0
   }))
 
   -- add line to functions
-  table.insert(show_function, replace([=[execute if items entity @s armor.$SLOT $ITEM[enchantments~[{enchantments:"phantom_armor:phantom_touched"}]] run item modify entity @s armor.$SLOT phantom_armor:disable_$ITEM]=],
+  table.insert(show_function, replace([=[execute if items entity @s armor.$SLOT $ITEM[enchantments~[{enchantments:"phantom_touched:phantom_touched"}]] run item modify entity @s armor.$SLOT phantom_touched:disable_$ITEM]=],
     {ITEM = item, SLOT = slot}))
-  table.insert(hide_function, replace([=[execute if items entity @s armor.$SLOT $ITEM[enchantments~[{enchantments:"phantom_armor:phantom_touched_disabled"}]] run item modify entity @s armor.$SLOT phantom_armor:enable_$ITEM]=],
+  table.insert(hide_function, replace([=[execute if items entity @s armor.$SLOT $ITEM[enchantments~[{enchantments:"phantom_touched:phantom_touched_disabled"}]] run item modify entity @s armor.$SLOT phantom_touched:enable_$ITEM]=],
     {ITEM = item, SLOT = slot}))
 end
 
-write("data/phantom_armor/function/show_armor.mcfunction", table.concat(show_function, "\n"))
-write("data/phantom_armor/function/hide_armor.mcfunction", table.concat(hide_function, "\n"))
+write("data/phantom_touched/function/show_armor.mcfunction", table.concat(show_function, "\n"))
+write("data/phantom_touched/function/hide_armor.mcfunction", table.concat(hide_function, "\n"))

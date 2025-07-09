@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:smithing_transform",
+  "template": "phantom_membrane",
+  "base": "leather_boots",
+  "result": {
+    "id": "leather_boots",
+    "components": {
+      "equippable": {
+        "slot": "feet",
+        "asset_id": "phantom_touched:nothing",
+        "equip_sound": "minecraft:item.armor.equip_leather"
+      },
+      "stored_enchantments": {
+        "phantom_touched:phantom_touched": 1
+      }
+    }
+  }
+}

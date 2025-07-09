@@ -1,0 +1,17 @@
+{
+    "criteria": {
+        "damaged_by_player": {
+            "trigger": "entity_hurt_player",
+            "conditions": {
+                "damage": {
+                    "source_entity": {
+                        "type": "player"
+                    }
+                }
+            }
+        }
+    },
+    "rewards": {
+        "function": "phantom_touched:damaged_by_player"
+    }
+}

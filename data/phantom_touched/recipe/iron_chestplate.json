@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:smithing_transform",
+  "template": "phantom_membrane",
+  "base": "iron_chestplate",
+  "result": {
+    "id": "iron_chestplate",
+    "components": {
+      "equippable": {
+        "slot": "chest",
+        "asset_id": "phantom_touched:nothing",
+        "equip_sound": "minecraft:item.armor.equip_iron"
+      },
+      "stored_enchantments": {
+        "phantom_touched:phantom_touched": 1
+      }
+    }
+  }
+}

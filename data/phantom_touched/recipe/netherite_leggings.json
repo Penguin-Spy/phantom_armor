@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:smithing_transform",
+  "template": "phantom_membrane",
+  "base": "netherite_leggings",
+  "result": {
+    "id": "netherite_leggings",
+    "components": {
+      "equippable": {
+        "slot": "legs",
+        "asset_id": "phantom_touched:nothing",
+        "equip_sound": "minecraft:item.armor.equip_netherite"
+      },
+      "stored_enchantments": {
+        "phantom_touched:phantom_touched": 1
+      }
+    }
+  }
+}

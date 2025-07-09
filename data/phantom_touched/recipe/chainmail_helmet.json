@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:smithing_transform",
+  "template": "phantom_membrane",
+  "base": "chainmail_helmet",
+  "result": {
+    "id": "chainmail_helmet",
+    "components": {
+      "equippable": {
+        "slot": "head",
+        "asset_id": "phantom_touched:nothing",
+        "equip_sound": "minecraft:item.armor.equip_chain"
+      },
+      "stored_enchantments": {
+        "phantom_touched:phantom_touched": 1
+      }
+    }
+  }
+}

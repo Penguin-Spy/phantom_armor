@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:smithing_transform",
+  "template": "phantom_membrane",
+  "base": "golden_boots",
+  "result": {
+    "id": "golden_boots",
+    "components": {
+      "equippable": {
+        "slot": "feet",
+        "asset_id": "phantom_touched:nothing",
+        "equip_sound": "minecraft:item.armor.equip_gold"
+      },
+      "stored_enchantments": {
+        "phantom_touched:phantom_touched": 1
+      }
+    }
+  }
+}

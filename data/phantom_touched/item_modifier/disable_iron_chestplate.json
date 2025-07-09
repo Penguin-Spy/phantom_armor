@@ -1,0 +1,22 @@
+{
+  "function": "sequence",
+  "functions": [
+    {
+      "function": "set_components",
+      "components": {
+        "equippable": {
+          "slot": "chest",
+          "asset_id": "minecraft:iron",
+          "equip_sound": "minecraft:item.armor.equip_iron"
+        }
+      }
+    },
+    {
+      "function": "set_enchantments",
+      "enchantments": {
+        "phantom_touched:phantom_touched": 0,
+        "phantom_touched:phantom_touched_disabled": 1
+      }
+    }
+  ]
+}

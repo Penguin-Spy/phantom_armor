@@ -1,9 +1,9 @@
-# Phantom Armor
+# Phantom Touched
 This datapack for Minecraft 1.21.5+ lets you make your armor (or elytra) invisible by applying phantom membrane to it in a smithing table!  
 For balancing, armor is temporarily revealed when taking PvP damage or when you have the invisibility effect, but this can be configured.
 
 ### Configuring
-After [installing the datapack](https://minecraft.wiki/w/Tutorial:Installing_a_data_pack), run `/function phantom_armor:settings` to configure the datapack.  
+After [installing the datapack](https://minecraft.wiki/w/Tutorial:Installing_a_data_pack), run `/function phantom_touched:settings` to configure the datapack.  
 The following options are available:
 - Reveal armor when taking damage from:  
   *Disabled*: armor will never be revealed when taking damage  
